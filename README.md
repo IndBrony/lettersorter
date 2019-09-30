@@ -15,3 +15,4 @@ go package for sorting string based on vocals and consonants
 - SortStringConcurrent(text string) string
   - essentialy same as SortString(), but this func implements concurrency to perform better at input more than 20 char
   - ex: SortStringConcurrent("osama") will return "aaoms"
+  
