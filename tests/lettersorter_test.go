@@ -17,3 +17,26 @@ func basicSortStringTesting(t *testing.T, input, expectedOutput string) {
 		t.Errorf("Test Fail, expecting %v but got %v", expectedOutput, output)
 	}
 }
+
+func TestSortStringConcurrent(t *testing.T) {
+	basicSortStringTestingConcurrent(t, "osama", "aaoms")
+	basicSortStringTestingConcurrent(t, "omama", "aaomm")
+	basicSortStringTestingConcurrent(t, "test", "estt")
+}
+func basicSortStringTestingConcurrent(t *testing.T, input, expectedOutput string) {
+	output := lettersorter.SortStringConcurrent(input)
+	if output != expectedOutput {
+		t.Errorf("Test Fail, expecting %v but got %v", expectedOutput, output)
+	}
+}
+
+func BenchmarkSortStringConcurrent(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		lettersorter.SortStringConcurrent("osam ghkyun hfdaa sd")
+	}
+}
+func BenchmarkSortString(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		lettersorter.SortString("osam ghkyun hfdaa sd")
+	}
+}
